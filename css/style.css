@@ -1,9 +1,9 @@
 /* Variriables */
 :root{
-	--khaki: #F0E68C;
-	--khakiDark: #BDB76B;
-	--darkStaleGray: #2F4F4F;
-	--white: #FFFFFF;
+	--khaki: #558a61;
+	--khakiDark: #06311a;
+	--darkStaleGray: #2f4f3f;
+	--white: #dcffeb;
 }
 /* Import Font */
 @font-face{
