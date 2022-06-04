@@ -12,7 +12,25 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<!-- Javascript -->	
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-  	</head>
+  		<!--
+		<script>
+  			$(document).ready(function(){
+  				
+  				$('input[type="radio"]').change(function(){
+  					
+  					if (this.value == 'easypaisa') {
+  						
+  						$('#easypaisaText').css('display', 'block');
+  					} 
+  					else {
+  						$('#easypaisaText').css('display', 'none');
+  					}
+  					
+  				});
+  			});
+  		</script>
+		-->
+ 	</head>
 <body>
 
 	<header>
@@ -118,7 +136,7 @@
 					<li>Checkout</li>
 				</ul>
 			</div> <!-- End of Breadcrumb-->
-<!--
+
 			<h2>Billing Detail</h2>
 			<div class="checkout-page">
 				<div class="billing-detail">					
@@ -203,137 +221,14 @@
 							<li>Total Amount: <span>R500</span></li>
 							<hr>
 							<hr>
-							<li><input type="submit" name="order" value="Place Order" a href="payfast.html">PayFast</li>
-							<li></a>
-							</li>
-							</ul>
-						</div>
+							<li><a href="payfast.html">Pay with PayFast</a></li>
+						</ul>
+					</div>
 					</form> <!-- End of Checkout Form -->
--->
 				</div>
 			</div>		
 		</main> <!-- Main Area -->
 	</div>
-    <div>
-        <script type="text/javascript">
-            function shippingRequiredPayFast (formReference) {
-            let cont = true;
-            for( let i = 0; i < formReference.elements.length; i++ ) {
-            
-            if( formReference.elements[i].className !== 'shipping' )
-            continue;
-            
-            if( formReference.elements[i].name === 'line2' )
-            continue;
-            
-            if( !cont )
-            continue;
-            
-            if( formReference.elements[i].name === 'country' ) {
-            if( formReference.elements[i].selectedIndex === 0 ) {
-            cont = false;
-            alert ( 'Select a country' );
-            }
-            } else{
-            if( 0 === formReference.elements[i].value.length || /^\s*$/.test( formReference.elements[i].value ) ) {
-            cont = false;
-            alert ( 'Complete all the mandatory address fields' );
-            }
-            }
-            }
-            if( !cont ) {
-            return cont;
-            }
-            }
-            </script>
-             <script type="text/javascript">
-            function customQuantitiesPayFast (formReference) {
-            formReference['amount'].value = formReference['amount'].value * formReference['custom_quantity'].value;
-            return true;
-            }
-            </script>
-             <script type="text/javascript">
-            function actionPayFastJavascript ( formReference ) {
-            let shippingValid = shippingRequiredPayFast( formReference );
-            let shippingValidOrOff = typeof shippingValid !== 'undefined' ? shippingValid : true; 
-            let customValid = shippingValidOrOff ? customQuantitiesPayFast( formReference ) : false;
-             if (typeof shippingValid !== 'undefined' && !shippingValid) {
-            return false;
-            }
-            if (typeof customValid !== 'undefined' && !customValid) {
-            return false;
-            }
-            return true;
-             }
-            </script>
-            <form onsubmit="return actionPayFastJavascript( this );" name="PayFastPayNowForm" action="https://www.payfast.co.za/eng/process" method="post">
-            <input required type="hidden" name="cmd" value="_paynow">
-            <input required type="hidden" name="receiver" pattern="[0-9]" value="10896781">
-            <input type="hidden" name="return_url" value="https://premiumseeds.netlify.app/index.html">
-            <input type="hidden" name="cancel_url" value="https://premiumseeds.netlify.app/checkout.html">
-            <input type="hidden" name="notify_url" value="https://premiumseeds.netlify.app/shop.html">
-            <table>
-            <tr>
-            <td><label id="PayFastAmountLabel" for="PayFastAmount">Amount: </label></td>
-            <td><input required id="PayFastAmount" type="number" step=".01" name="amount" min="5.00" placeholder="5.00" value="500.00"></td>
-            </tr>
-            </table>
-            
-            <table>
-            <tr>
-            <td><label for="custom_quantity">Quantity: </label></td>
-            <td><input required id="custom_quantity" type="number" name="custom_quantity" value="1"></td>
-            </tr>
-            </table>
-            
-            <input required type="hidden" name="item_name" maxlength="255" value="Premium Seeds">
-            <input type="hidden" name="item_description" maxlength="255" value="50 x Premium Regular Cannabis Seeds">
-            <table>
-            <tr>
-            <td colspan="2"><span style="font-weight: bold;">Shipping Address</span></td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;Line 1</td>
-            <td><input type="text" name="line1" class="shipping" value=""></td>
-            </tr>
-            <tr>
-            <td>Line 2</td>
-            <td><input type="text" name="line2" class="shipping" value=""></td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;City</td>
-            <td><input type="text" class="shipping" name="city" value=""></td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;Province</td>
-            <td><input type="text" class="shipping" name="region" value=""></td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;Country</td>
-            <td>
-            <select name="country" class="shipping">
-            <option value="" selected="selected">- Select -</option>
-            <option value="South Africa">South Africa</option>
-            <option value="">------------------------</option>
-            </select>
-            </td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;Postal Code</td>
-            <td><input type="number" name="code" class="shipping" value=""></td>
-            </tr>
-            </table>
-            <table>
-            <tr>
-            <td colspan=2 align=center>
-            <input type="image" src="https://www.payfast.co.za/images/buttons/BuyNow/Green-Large-Round-BuyNow.png" alt="Buy Now" title="Buy Now with PayFast">
-            </td>
-            </tr>
-            </table>
-            </form>
-
-    </div>
-
 <div>
 	<footer>
 		<div class="container">
