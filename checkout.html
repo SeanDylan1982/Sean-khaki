@@ -284,61 +284,58 @@
 								</tr>
 								</table>
 							</form>
-					
-					</div>	
-					
-
-						</ul>
-					</div>
+						</div>	
+							<script type="text/javascript">
+								function shippingRequiredPayFast (formReference) {
+								let cont = true;
+								for( let i = 0; i < formReference.elements.length; i++ ) {
+								
+								if( formReference.elements[i].className !== 'shipping' )
+								continue;
+								
+								if( formReference.elements[i].name === 'line2' )
+								continue;
+								
+								if( !cont )
+								continue;
+								
+								if( formReference.elements[i].name === 'country' ) {
+								if( formReference.elements[i].selectedIndex === 0 ) {
+								cont = false;
+								alert ( 'Select a country' );
+								}
+								} else{
+								if( 0 === formReference.elements[i].value.length || /^\s*$/.test( formReference.elements[i].value ) ) {
+								cont = false;
+								alert ( 'Complete all the mandatory address fields' );
+								}
+								}
+								}
+								if( !cont ) {
+								return cont;
+								}
+								}
+								</script>
+									<script type="text/javascript">
+								function actionPayFastJavascript ( formReference ) {
+								let shippingValid = shippingRequiredPayFast( formReference );
+									if (typeof shippingValid !== 'undefined' && !shippingValid) {
+								return false;
+								}
+								if (typeof customValid !== 'undefined' && !customValid) {
+								return false;
+								}
+								return true;
+								}
+								</script>
+							</ul>
+						</div>
 					</form> <!-- End of Checkout Form -->
 				</div>
 			</div>		
 		</main> <!-- Main Area -->
 	</div>
 <div>
-	<script type="text/javascript">
-		function shippingRequiredPayFast (formReference) {
-		let cont = true;
-		for( let i = 0; i < formReference.elements.length; i++ ) {
-		
-		if( formReference.elements[i].className !== 'shipping' )
-		continue;
-		
-		if( formReference.elements[i].name === 'line2' )
-		continue;
-		
-		if( !cont )
-		continue;
-		
-		if( formReference.elements[i].name === 'country' ) {
-		if( formReference.elements[i].selectedIndex === 0 ) {
-		cont = false;
-		alert ( 'Select a country' );
-		}
-		} else{
-		if( 0 === formReference.elements[i].value.length || /^\s*$/.test( formReference.elements[i].value ) ) {
-		cont = false;
-		alert ( 'Complete all the mandatory address fields' );
-		}
-		}
-		}
-		if( !cont ) {
-		return cont;
-		}
-		}
-		</script>
-			<script type="text/javascript">
-		function actionPayFastJavascript ( formReference ) {
-		let shippingValid = shippingRequiredPayFast( formReference );
-			if (typeof shippingValid !== 'undefined' && !shippingValid) {
-		return false;
-		}
-		if (typeof customValid !== 'undefined' && !customValid) {
-		return false;
-		}
-		return true;
-			}
-
 	<footer>
 		<div class="container">
 			<div class="footer-widget">
