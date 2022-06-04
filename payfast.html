@@ -245,8 +245,8 @@
             return cont;
             }
             }
-        </script>
-        <script type="text/javascript">
+            </script>
+             <script type="text/javascript">
             function customQuantitiesPayFast (formReference) {
             formReference['amount'].value = formReference['amount'].value * formReference['custom_quantity'].value;
             return true;
@@ -265,14 +265,20 @@
             }
             return true;
              }
-        </script>
+            </script>
             <form onsubmit="return actionPayFastJavascript( this );" name="PayFastPayNowForm" action="https://www.payfast.co.za/eng/process" method="post">
             <input required type="hidden" name="cmd" value="_paynow">
             <input required type="hidden" name="receiver" pattern="[0-9]" value="10896781">
             <input type="hidden" name="return_url" value="https://premiumseeds.netlify.app/index.html">
             <input type="hidden" name="cancel_url" value="https://premiumseeds.netlify.app/checkout.html">
             <input type="hidden" name="notify_url" value="https://premiumseeds.netlify.app/shop.html">
-            <input required type="hidden" name="amount" value="500.00">
+            <table>
+            <tr>
+            <td><label id="PayFastAmountLabel" for="PayFastAmount">Amount: </label></td>
+            <td><input required id="PayFastAmount" type="number" step=".01" name="amount" min="5.00" placeholder="5.00" value="500.00"></td>
+            </tr>
+            </table>
+            
             <table>
             <tr>
             <td><label for="custom_quantity">Quantity: </label></td>
@@ -288,19 +294,19 @@
             </tr>
             <tr>
             <td><span style="color:red;">*</span>&nbsp;Line 1</td>
-            <td><input type="text" name="line1" class="shipping" value="" placeholder="1 Main Street"></td>
+            <td><input type="text" name="line1" class="shipping" value=""></td>
             </tr>
             <tr>
             <td>Line 2</td>
-            <td><input type="text" name="line2" class="shipping" value="" placeholder="Apartment No. 255"></td>
+            <td><input type="text" name="line2" class="shipping" value=""></td>
             </tr>
             <tr>
             <td><span style="color:red;">*</span>&nbsp;City</td>
-            <td><input type="text" class="shipping" name="city" value="" placeholder="Benoni"></td>
+            <td><input type="text" class="shipping" name="city" value=""></td>
             </tr>
             <tr>
             <td><span style="color:red;">*</span>&nbsp;Province</td>
-            <td><input type="text" class="shipping" name="region" value="" placeholder="Gauteng Province"></td>
+            <td><input type="text" class="shipping" name="region" value=""></td>
             </tr>
             <tr>
             <td><span style="color:red;">*</span>&nbsp;Country</td>
@@ -320,12 +326,11 @@
             <table>
             <tr>
             <td colspan=2 align=center>
-            <input type="image" src="https://www.payfast.co.za/images/buttons/BuyNow/Dark-Large-Square-BuyNow.png" alt="Buy Now" title="Buy Now with PayFast">
+            <input type="image" src="https://www.payfast.co.za/images/buttons/BuyNow/Green-Large-Round-BuyNow.png" alt="Buy Now" title="Buy Now with PayFast">
             </td>
             </tr>
             </table>
-        </form>
-
+            </form>
 
     </div>
 
