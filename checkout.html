@@ -167,6 +167,13 @@
 								<select id="city" name="city">
 									<option>---Select a City---</option>
 									<option>Johannesburg</option>
+									<option>Cape Town</option>
+									<option>Durban</option>
+									<option>East London</option>
+									<option>Port Elizabeth</option>
+									<option>Limpopo</option>
+									<option>North West</option>
+									<option>Mahikeng</option>
 								</select>
 							</div>
 						</div>
@@ -211,120 +218,10 @@
 							<hr>
 							<li>Total Amount: <span>R500</span></li>
 							<hr>
-							<li><input type="radio" name="payment"> Bank Deposit</li>
-							<li><input type="radio" id="easypaysa" name="payment" value="easypaysa"> EasyPaySA</li>
-							<li>
-								<textarea id="easypaisaText" rows="5" disabled="disable">Please deposit the payment into our EasyPaySA account and send us the payment slip.</textarea>
-							</li>
-							<li><input type="radio" name="payment"> CryptoWallet</li>
 							<hr>
-							<li><input type="submit" name="order" value="Place Order"></li>
-							<li>
+							<li><input type="submit" name="order" value="Place Order" a href="payfast.html">PayFast</li>
+							<li></a>
 							</li>
-								</script>
-								<form onsubmit="return actionPayFastJavascript( this );" name="PayFastPayNowForm" action="https://www.payfast.co.za/eng/process" method="post">
-								<input required type="hidden" name="cmd" value="_paynow">
-								<input required type="hidden" name="receiver" pattern="[0-9]" value="10896781">
-								<input type="hidden" name="return_url" value="https://premiumseeds.netlify.app/checkout.html">
-								<input type="hidden" name="cancel_url" value="https://premiumseeds.netlify.app/checkout.html">
-								<input type="hidden" name="notify_url" value="https://premiumseeds.netlify.app/checkout.html">
-								<table>
-								<tr>
-								<td><label id="PayFastAmountLabel" for="PayFastAmount">Amount: </label></td>
-								<td><input required id="PayFastAmount" type="number" step="500.00" name="amount" min="500.00" placeholder="500.00" value="500.00"></td>
-								</tr>
-								</table>
-								<input required type="hidden" name="item_name" maxlength="255" value="Pay Now with PayFast" placeholder="Pay Now with PayFast">
-								<input type="hidden" name="item_description" maxlength="255" value="Pay Now with PayFast using your card" placeholder="Pay Now with PayFast using your Card">
-								
-									<table>
-										<tr>
-										<td colspan="2"><span style="font-weight: bold;">Shipping Address</span></td>
-										</tr>
-										<tr>
-										<td><span style="color:red;">*</span>&nbsp;Line 1</td>
-										<td><input type="text" name="line1" class="shipping" value="" placeholder="1 Main Street"></td>
-										</tr>
-										<tr>
-										<td>Line 2</td>
-										<td><input type="text" name="line2" class="shipping" value="" placeholder="Apartment No. 2"></td>
-										</tr>
-										<tr>
-										<td><span style="color:red;">*</span>&nbsp;City</td>
-										<td><input type="text" class="shipping" name="city" value="" placeholder="Benoni"></td>
-										</tr>
-										<tr>
-										<td><span style="color:red;">*</span>&nbsp;Province</td>
-										<td><input type="text" class="shipping" name="region" value="" placeholder="Gauteng Province"></td>
-										</tr>
-										<tr>
-										<td><span style="color:red;">*</span>&nbsp;Country</td>
-										<td><input type="text" class="shipping" name="country" value="" placeholder="South Africa"></td>
-										<td>
-											<select name="country" class="shipping">
-											<option value="" selected="selected">- Select -</option>
-											<option value="South Africa">South Africa</option>
-											<option value="">------------------------</option>
-											</select>
-										</td>
-										</tr>
-										<tr>
-										<td><span style="color:red;">*</span>&nbsp;Postal Code</td>
-										<td><input type="number" name="code" class="shipping" value="" placeholder="1450"></td>
-										</tr>
-										</table>
-											<table>
-												<tr>
-												<td colspan=2 align=center>
-												<input type="image" src="https://www.payfast.co.za/images/buttons/PayNow/Green-Large-Round-PayNow.png" alt="Pay Now" title="Pay Now with PayFast">
-												</td>
-												</tr>
-											</table>
-								</form>
-						</div>	
-							<script type="text/javascript">
-								function shippingRequiredPayFast (formReference) {
-								let cont = true;
-								for( let i = 0; i < formReference.elements.length; i++ ) {
-								
-								if( formReference.elements[i].className !== 'shipping' )
-								continue;
-								
-								if( formReference.elements[i].name === 'line2' )
-								continue;
-								
-								if( !cont )
-								continue;
-								
-								if( formReference.elements[i].name === 'country' ) {
-								if( formReference.elements[i].selectedIndex === 0 ) {
-								cont = false;
-								alert ( 'Select a country' );
-								}
-								} else{
-								if( 0 === formReference.elements[i].value.length || /^\s*$/.test( formReference.elements[i].value ) ) {
-								cont = false;
-								alert ( 'Complete all the mandatory address fields' );
-								}
-								}
-								}
-								if( !cont ) {
-								return cont;
-								}
-								}
-								</script>
-									<script type="text/javascript">
-								function actionPayFastJavascript ( formReference ) {
-								let shippingValid = shippingRequiredPayFast( formReference );
-									if (typeof shippingValid !== 'undefined' && !shippingValid) {
-								return false;
-								}
-								if (typeof customValid !== 'undefined' && !customValid) {
-								return false;
-								}
-								return true;
-								}
-								</script>
 							</ul>
 						</div>
 					</form> <!-- End of Checkout Form -->
