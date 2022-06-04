@@ -266,6 +266,7 @@ main .new-product-section .product-section-heading h3{
 }
 main .product-content{
 	margin-top: 40px;
+	text-align: center;
 	display: box;
 	}
 main .product-content .product img{
@@ -291,7 +292,7 @@ main .product-content .product h2{
 	letter-spacing: 1px;
 }
 main .product-content .product .product-detail a{
-	float: left;
+	float: centre;
 	color: var(--darkStaleGray);
 	background-color: transparent;
 	font-size: 11px;
@@ -310,7 +311,7 @@ main .product-content .product .product-detail a:hover{
 }
 main .product-content .product p{
 	color: var(--darkStaleGray);
-	float: right;
+	float: centre;
 	font-size: 14px;
 	font-weight: bold;
 	margin-top: 5px;
