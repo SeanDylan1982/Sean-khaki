@@ -114,6 +114,38 @@
 					</form>
 				</div>
 			</div> <!-- menu -->
+
+				<script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+
+					<!-- Create a pay button that will open the popup-->
+					<button id="checkout-button">Click HERE to Pay Now with Yoco!</button>
+					
+					<script>
+					var yoco = new window.YocoSDK({
+						publicKey: 'pk_live_c21afba5O4l8GRy1cb64',
+					});
+					var checkoutButton = document.querySelector('#checkout-button');
+					checkoutButton.addEventListener('click', function () {
+						yoco.showPopup({
+						amountInCents: 50000,
+						currency: 'ZAR',
+						name: 'Premium Seeds',
+						description: '50 x Premium Regular Cannabis Seeds Including Free Delivery (Only In South Africa)',
+						callback: function (result) {
+							// This function returns a token that your server can use to capture a payment
+							if (result.error) {
+							const errorMessage = result.error.message;
+							alert("error occured: " + errorMessage);
+							} else {
+							alert("card successfully tokenised: " + result.id);
+							}
+							// In a real integration - you would now pass this chargeToken back to your
+							// server along with the order/basket that the customer has purchased.
+						}
+						})
+					});
+				</script> <!-- Yoco Popup Payment Script -->
+			</div>
 		</div> <!-- container -->
 	</header> <!-- header -->
 
@@ -152,39 +184,7 @@
 					</div>
 				</div>
 			</div> <!-- Recommend Product Section -->
-					
-				<script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
-
-					<!-- Create a pay button that will open the popup-->
-					<button id="checkout-button">Click HERE to Pay Now with Yoco!</button>
-					
-					<script>
-					var yoco = new window.YocoSDK({
-						publicKey: 'pk_live_c21afba5O4l8GRy1cb64',
-					});
-					var checkoutButton = document.querySelector('#checkout-button');
-					checkoutButton.addEventListener('click', function () {
-						yoco.showPopup({
-						amountInCents: 50000,
-						currency: 'ZAR',
-						name: 'Premium Seeds',
-						description: '50 x Premium Regular Cannabis Seeds Including Free Delivery (Only In South Africa)',
-						callback: function (result) {
-							// This function returns a token that your server can use to capture a payment
-							if (result.error) {
-							const errorMessage = result.error.message;
-							alert("error occured: " + errorMessage);
-							} else {
-							alert("card successfully tokenised: " + result.id);
-							}
-							// In a real integration - you would now pass this chargeToken back to your
-							// server along with the order/basket that the customer has purchased.
-						}
-						})
-					});
-				</script>
-		</div>
-	</main> <!-- Main Area -->
+		</main> <!-- Main Area -->
 </div>
 
 	<footer>
