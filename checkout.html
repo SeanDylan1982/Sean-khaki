@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<!-- Javascript -->	
 		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
   	</head>
 <body>
 
@@ -27,63 +28,6 @@
 						</div>
 					</a>
 				</div> <!-- logo -->
-				<div class="shop-icon">
-					<div class="dropdown">
-						<img src="/img/icons/account.png">
-						<div class="dropdown-menu">
-							<ul>
-								<li><a href="account.html">My Account</a></li>
-								<li><a href="orders.html">My Orders</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="dropdown">
-						<img src="/img/icons/heart.png">
-						<div class="dropdown-menu wishlist-item">
-							<table border="1">
-								<thead>
-									<tr>
-										<th>Image</th>
-										<th>Product Name</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><img src="/img/product/img1.jpg"></td>
-										<td>50 x Premium Regular Cannabis Seeds</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="dropdown">
-						<img src="/img/icons/shopping_cart.png">
-						<div class="dropdown-menu cart-item">
-							<table border="1">
-								<thead>
-									<tr>
-										<th>Image</th>
-										<th>Product Name</th>
-										<th class="center">Price</th>
-										<th class="center">Quantity</th>
-										<th class="center">Amount</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><img src="/img/product/img1.jpg"></td>
-										<td>50 x Premium Regular Cannabis Seeds</td>
-										<td class="center">500</td>
-										<td class="center">1</td>
-										<td class="center">500</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div> <!-- shop icons -->
-			</div> <!-- brand -->
-
 			<div class="menu-bar">
 				<div class="menu">
 					<ul>
@@ -96,8 +40,8 @@
 				<div class="search-bar">
 					<form>
 						<div class="form-group">
-							<input type="text" class="form-control" name="search" placeholder="Search...">
-							<img src="/img/icons/search.png">
+							<input type="text" class="form-control" name="search" placeholder="Search">
+						  <img src="/img/icons/search.png">
 						</div>
 					</form>
 				</div>
@@ -113,227 +57,72 @@
 					<li> / </li>
 					<li><a href="shop.html">Shop</a></li>
 					<li> / </li>
-					<li><a href="cart.html">Cart</a></li>
-					<li> / </li>
 					<li>Checkout</li>
 				</ul>
 			</div> <!-- End of Breadcrumb-->
-<!--
-			<h2>Billing Detail</h2>
-			<div class="checkout-page">
-				<div class="billing-detail">					
-					<form class="checkout-form">
-						<h4>Shipping Detail</h4>
-						<div class="form-inline">
-							<div class="form-group">
-								<label>First Name</label>
-								<input type="text" id="fname" name="fname" placeHolder="John">
-							</div>
-							<div class="form-group">
-								<label>Last Name</label>
-								<input type="text" id="lname" name="lname" placeHolder="Doe">
-							</div>
-						</div>
-						<div class="form-group">
-							<label>Company Name (Optional)</label>
-							<input type="text" id="cname" name="cname" placeHolder="Optional">
-						</div>
-						<div class="form-inline">
-							<div class="form-group">
-								<label>Country</label>
-								<select id="country" name="country">
-									<option>---Select a Country---</option>
-									<option>South Africa</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>City</label>
-								<select id="city" name="city">
-									<option>---Select a City---</option>
-									<option>Johannesburg</option>
-									<option>Cape Town</option>
-									<option>Durban</option>
-									<option>East London</option>
-									<option>Port Elizabeth</option>
-									<option>Limpopo</option>
-									<option>North West</option>
-									<option>Mahikeng</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label>Address</label>
-							<textarea style="resize:none" id="address" name="address" rows="3"></textarea>
-						</div>
-						<h4>Login Detail</h4>
-						<div class="form-inline">					
-							<div class="form-group">
-								<label>Email</label>
-								<input type="email" id="email" name="email" autocomplete="off">
-							</div>
-							<div class="form-group">
-								<label>Password</label>
-								<input type="password" id="password" name="password" autocomplete="off">
-							</div>
-						</div>
-						<h4>Contact Detail</h4>
-						<div class="form-inline">					
-							<div class="form-group">
-								<label>Tel</label>
-								<input type="text" id="tel" name="tel" minlength="11" maxlength="11">
-							</div>
-							<div class="form-group">
-								<label>Mobile</label>
-								<input type="text" id="mobile" name="mobile" minlength="11" maxlength="11">
-							</div>
-						</div>
-						<h4>Delivery Instructions (Optional)</h4>
-						<div class="form-group">
-							<label>Order Note</label>
-							<textarea style="resize:none" id="address" name="address" rows="3"></textarea>
-						</div>					
+			<div>
+			<form id="payment-form" method="POST">
+				<div class="one-liner">
+					<div id="card-frame">
+					<!-- Yoco Inline form will be added here -->
+					</div>
+					<button id="pay-button">
+					PAY ZAR 500.00
+					</button>
 				</div>
-				<div class="order-summary">
-					<div class="checkout-total">
-						<h3>Order Summary</h3>
-						<ul>
-							<li>Cart Amount: <span>R500</span></li>
-							<li>Delivery: <span>0</span></li>
-							<hr>
-							<li>Total Amount: <span>R500</span></li>
-							<hr>
-							<hr>
-							<li><input type="submit" name="order" value="Place Order" a href="payfast.html">PayFast</li>
-							<li></a>
-							</li>
-							</ul>
-						</div>
-					</form> <!-- End of Checkout Form -->
--->
-				</div>
-			</div>		
+				<p class="success-payment-message" />
+				</form>
+			</div>
+			<div>
+				<script>
+					// Replace the supplied `publicKey` with your own.
+					// Ensure that in production you use a production public_key.
+					var sdk = new window.YocoSDK({
+					  publicKey: 'pk_live_c21afba5O4l8GRy1cb64' //Live Public Key from Yoco
+					});
+				  
+					// Create a new dropin form instance
+					var inline = sdk.inline({
+					  layout: 'field',
+					  amountInCents: 50000,
+					  currency: 'ZAR'
+					});
+					// this ID matches the id of the element we created earlier.
+					inline.mount('#card-frame');
+				  </script>
+			</div>
+			<div>	
+				<script>
+					// Run our code when your form is submitted
+					var form = document.getElementById('payment-form');
+					var submitButton = document.getElementById('pay-button');
+					form.addEventListener('submit', function (event) {
+					  event.preventDefault()
+					  // Disable the button to prevent multiple clicks while processing
+					  submitButton.disabled = true;
+					  // This is the inline object we created earlier with the sdk
+					  inline.createToken().then(function (result) {
+						// Re-enable button now that request is complete
+						// (i.e. on success, on error and when auth is cancelled)
+						submitButton.disabled = false;
+						if (result.error) {
+						  const errorMessage = result.error.message;
+						  errorMessage && alert("error occured: " + errorMessage);
+						} else {
+						  const token = result;
+						  alert("card successfully tokenised: " + token.id);
+						}
+					  }).catch(function (error) {
+						// Re-enable button now that request is complete
+						submitButton.disabled = false;
+						alert("error occured: " + error);
+					  });
+					});
+					// Any additional form data you want to submit to your backend should be done here, or in another event listener
+				  </script>  
+			</div>
 		</main> <!-- Main Area -->
 	</div>
-    <div>
-        <script type="text/javascript">
-            function shippingRequiredPayFast (formReference) {
-            let cont = true;
-            for( let i = 0; i < formReference.elements.length; i++ ) {
-            
-            if( formReference.elements[i].className !== 'shipping' )
-            continue;
-            
-            if( formReference.elements[i].name === 'line2' )
-            continue;
-            
-            if( !cont )
-            continue;
-            
-            if( formReference.elements[i].name === 'country' ) {
-            if( formReference.elements[i].selectedIndex === 0 ) {
-            cont = false;
-            alert ( 'Select a country' );
-            }
-            } else{
-            if( 0 === formReference.elements[i].value.length || /^\s*$/.test( formReference.elements[i].value ) ) {
-            cont = false;
-            alert ( 'Complete all the mandatory address fields' );
-            }
-            }
-            }
-            if( !cont ) {
-            return cont;
-            }
-            }
-            </script>
-             <script type="text/javascript">
-            function customQuantitiesPayFast (formReference) {
-            formReference['amount'].value = formReference['amount'].value * formReference['custom_quantity'].value;
-            return true;
-            }
-            </script>
-             <script type="text/javascript">
-            function actionPayFastJavascript ( formReference ) {
-            let shippingValid = shippingRequiredPayFast( formReference );
-            let shippingValidOrOff = typeof shippingValid !== 'undefined' ? shippingValid : true; 
-            let customValid = shippingValidOrOff ? customQuantitiesPayFast( formReference ) : false;
-             if (typeof shippingValid !== 'undefined' && !shippingValid) {
-            return false;
-            }
-            if (typeof customValid !== 'undefined' && !customValid) {
-            return false;
-            }
-            return true;
-             }
-            </script>
-            <form onsubmit="return actionPayFastJavascript( this );" name="PayFastPayNowForm" action="https://www.payfast.co.za/eng/process" method="post">
-            <input required type="hidden" name="cmd" value="_paynow">
-            <input required type="hidden" name="receiver" pattern="[0-9]" value="10896781">
-            <input type="hidden" name="return_url" value="https://premiumseeds.netlify.app/index.html">
-            <input type="hidden" name="cancel_url" value="https://premiumseeds.netlify.app/checkout.html">
-            <input type="hidden" name="notify_url" value="https://premiumseeds.netlify.app/shop.html">
-            <table>
-            <tr>
-            <td><label id="PayFastAmountLabel" for="PayFastAmount">Amount: </label></td>
-            <td><input required id="PayFastAmount" type="number" step=".01" name="amount" min="5.00" placeholder="5.00" value="500.00"></td>
-            </tr>
-            </table>
-            
-            <table>
-            <tr>
-            <td><label for="custom_quantity">Quantity: </label></td>
-            <td><input required id="custom_quantity" type="number" name="custom_quantity" value="1"></td>
-            </tr>
-            </table>
-            
-            <input required type="hidden" name="item_name" maxlength="255" value="Premium Seeds">
-            <input type="hidden" name="item_description" maxlength="255" value="50 x Premium Regular Cannabis Seeds">
-            <table>
-            <tr>
-            <td colspan="2"><span style="font-weight: bold;">Shipping Address</span></td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;Line 1</td>
-            <td><input type="text" name="line1" class="shipping" value=""></td>
-            </tr>
-            <tr>
-            <td>Line 2</td>
-            <td><input type="text" name="line2" class="shipping" value=""></td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;City</td>
-            <td><input type="text" class="shipping" name="city" value=""></td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;Province</td>
-            <td><input type="text" class="shipping" name="region" value=""></td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;Country</td>
-            <td>
-            <select name="country" class="shipping">
-            <option value="" selected="selected">- Select -</option>
-            <option value="South Africa">South Africa</option>
-            <option value="">------------------------</option>
-            </select>
-            </td>
-            </tr>
-            <tr>
-            <td><span style="color:red;">*</span>&nbsp;Postal Code</td>
-            <td><input type="number" name="code" class="shipping" value=""></td>
-            </tr>
-            </table>
-            <table>
-            <tr>
-            <td colspan=2 align=center>
-            <input type="image" src="https://www.payfast.co.za/images/buttons/BuyNow/Green-Large-Round-BuyNow.png" alt="Buy Now" title="Buy Now with PayFast">
-            </td>
-            </tr>
-            </table>
-            </form>
-
-    </div>
-
 <div>
 	<footer>
 		<div class="container">

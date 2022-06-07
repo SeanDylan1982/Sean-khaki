@@ -50,7 +50,6 @@
   		</script>
  	</head>
 <body>
-
 	<header>
 		<div class="container">
 			<div class="brand">
@@ -63,81 +62,7 @@
 						</div>
 					</a>
 				</div> <!-- logo -->
-				<div class="shop-icon">
-					<div class="dropdown">
-						<img src="/img/icons/account.png">
-						<div class="dropdown-menu">
-							<ul>
-								<li><a href="account.html">My Account</a></li>
-								<li><a href="orders.html">My Orders</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="dropdown">
-						<img src="/img/icons/heart.png">
-						<div class="dropdown-menu wishlist-item">
-							<table border="1">
-								<thead>
-									<tr>
-										<th>Image</th>
-										<th>Product Name</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><img src="/img/product/img1.png"></td>
-										<td>50 x Premium Regular Cannabis Seeds</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="dropdown">
-						<img src="/img/icons/shopping_cart.png">
-						<div class="dropdown-menu cart-item">
-							<table border="1">
-								<thead>
-									<tr>
-										<th>Image</th>
-										<th>Product Name</th>
-										<th class="center">Price</th>
-										<th class="center">Quantity</th>
-										<th class="center">Amount</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><img src="/img/product/img1.png"></td>
-										<td>50 x Premium Regular Cannabis Seeds</td>
-										<td class="center">500</td>
-										<td class="center">1</td>
-										<td class="center">500</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div> <!-- shop icons -->
 			</div> <!-- brand -->
-
-			<div class="menu-bar">
-				<div class="menu">
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="shop.html">Shop</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-				<div class="search-bar">
-					<form>
-						<div class="form-group">
-							<input type="text" class="form-control" name="search" placeholder="Search...">
-							<img src="/img/icons/search.png">
-						</div>
-					</form>
-				</div>
-			</div> <!-- menu -->
 		</div> <!-- container -->
 	</header> <!-- header -->
 
@@ -152,54 +77,68 @@
 					<li><a href="product.html">Product</a></li>
 				</ul>
 			</div> <!-- End of Breadcrumb-->
-
-			<div class="single-product">
-				<div class="images-section">
-					<div class="larg-img">
-						<img src="/img/product/img1.png">
+			<div>
+			<form id="payment-form" method="POST">
+				<div class="one-liner">
+					<div id="card-frame">
+					<!-- Yoco Inline form will be added here -->
 					</div>
-					<div class="small-img">
-						<a class="fancybox" rel="group" href="/img/product/img2.png">
-							<img src="/img/product/img2.png">
-						</a>
-						<a class="fancybox" rel="group" href="/img/product/img1.png">
-							<img src="/img/product/img1.png">
-						</a>
-						<a class="fancybox" rel="group" href="/img/product/img2.png">
-							<img src="/img/product/img2.png">
-						</a>
-						<a class="fancybox" rel="group" href="/img/product/img1.png">
-							<img src="/img/product/img1.png">
-						</a>
-					</div>
-				</div> <!-- End of Images Section-->
-
-				<div class="product-detail">
-					<div class="product-name">
-						<h1>50 x Premium Regular Cannabis Seeds</h1>
-					</div>
-					<div class="product-description">
-						<p>	Including Free Delivery (South Africa ONLY)
-							We have no way of determining what exactly 
-							each seed is, so we sell a mixed selection.
-						</p>
-					</div>
-					<div class="product-price">
-						<h3>R500</h3>
-					</div>
-					<div class="product-cart">
-						<form id="cart-form">
-							<div class="form-group">
-								<input type="number" class="cart-number" name="cartNumber" value="1" min="1" max="10">
-								<input type="submit" name="addToCart" value="Add To Cart">
-							</div>
-						</form>
-						<form id="wishlist-form">
-							<div class="form-group">
-								<input type="checkbox" class="wishlist" name="wishlist"> Add To Wishlist
-							</div>
-						</form>
-					</div>
+					<button id="pay-button">
+					PAY ZAR 500.00
+					</button>
+				</div>
+				<p class="success-payment-message" />
+				</form>
+			</div>
+			<div>
+				<script>
+					// Replace the supplied `publicKey` with your own.
+					// Ensure that in production you use a production public_key.
+					var sdk = new window.YocoSDK({
+						publicKey: 'pk_live_c21afba5O4l8GRy1cb64' //Live Public Key from Yoco
+					});
+					
+					// Create a new dropin form instance
+					var inline = sdk.inline({
+						layout: 'field',
+						amountInCents: 50000,
+						currency: 'ZAR'
+					});
+					// this ID matches the id of the element we created earlier.
+					inline.mount('#card-frame');
+					</script>
+			</div>
+			<div>	
+				<script>
+					// Run our code when your form is submitted
+					var form = document.getElementById('payment-form');
+					var submitButton = document.getElementById('pay-button');
+					form.addEventListener('submit', function (event) {
+						event.preventDefault()
+						// Disable the button to prevent multiple clicks while processing
+						submitButton.disabled = true;
+						// This is the inline object we created earlier with the sdk
+						inline.createToken().then(function (result) {
+						// Re-enable button now that request is complete
+						// (i.e. on success, on error and when auth is cancelled)
+						submitButton.disabled = false;
+						if (result.error) {
+							const errorMessage = result.error.message;
+							errorMessage && alert("error occured: " + errorMessage);
+						} else {
+							const token = result;
+							alert("card successfully tokenised: " + token.id);
+						}
+						}).catch(function (error) {
+						// Re-enable button now that request is complete
+						submitButton.disabled = false;
+						alert("error occured: " + error);
+						});
+					});
+					// Any additional form data you want to submit to your backend should be done here, or in another event listener
+					</script>  
+			</div>
+		</main> <!-- Main Area -->
 					<hr>
 					<div class="product-meta">
 						<p><b>Category: </b> Seeds</p>
@@ -207,43 +146,6 @@
 						<p><b>Share This Product: </b> Facebook, Twitter</p>
 					</div>
 				</div> <!-- End of Product Detail-->
-			</div>
-			<hr>
-			<br class="product-long-description">
-				<h3>Product Description</h3>
-				<h1>
-					50 x Premium Regular Cannabis Seeds 
-				</h1>
-				<h2>
-					Including Free Delivery (South Africa ONLY)
-				</h2>
-				<br></br>
-				<h3>
-					We have no way of determining what exactly 
-					each seed is, so we sell a mixed selection.
-				</h3>
-				<h1>R500</h1>
-			</div>
-			<hr>
-			<div class="new-product-section">
-				<div class="product-section-heading">
-					<h2>Recommend Products <img src="/img/icons/good_quality.png"></h2>
-					<h3>OUR BEST PRODUCT RECOMMENDED FOR YOU</h3>
-				</div>
-				<div class="product-content">
-					<div class="product">
-						<a href="product.html">
-							<img src="/img/product/img1.png">
-						</a>
-						<div class="product-detail">
-							<h3>Premium Regular Cannabis Seeds</h3>
-							<h2>Including Free Delivery (South Africa ONLY)</h2>
-							<a href="#">Add to Cart</a>
-							<p>R500</p>
-						</div>
-					</div>
-				</div>
-			</div> <!-- Recommend Product Section -->
 		</main> <!-- Main Area -->
 	</div>
 

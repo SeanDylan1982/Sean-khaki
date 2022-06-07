@@ -26,7 +26,6 @@
 		 </script>
  	</head>
 <body>
-
 	<header>
 		<div class="container">
 			<div class="brand">
@@ -39,63 +38,10 @@
 						</div>
 					</a>
 				</div> <!-- logo -->
-				<div class="shop-icon">
-					<div class="dropdown">
-						<img src="/img/icons/account.png">
-						<div class="dropdown-menu">
-							<ul>
-								<li><a href="account.html">My Account</a></li>
-								<li><a href="orders.html">My Orders</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="dropdown">
-						<img src="/img/icons/heart.png">
-						<div class="dropdown-menu wishlist-item">
-							<table border="1">
-								<thead>
-									<tr>
-										<th>Image</th>
-										<th>Product Name</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><img src="/img/product/img1.png"></td>
-										<td>50 x Premium Regular Cannabis Seeds</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="dropdown">
-						<img src="/img/icons/shopping_cart.png">
-						<div class="dropdown-menu cart-item">
-							<table border="1">
-								<thead>
-									<tr>
-										<th>Image</th>
-										<th>Product Name</th>
-										<th class="center">Price</th>
-										<th class="center">Quantity</th>
-										<th class="center">Amount</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><img src="/img/product/img1.png"></td>
-										<td>50 x Premium Regular Cannabis Seeds</td>
-										<td class="center">500</td>
-										<td class="center">1</td>
-										<td class="center">500</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div> <!-- shop icons -->
-			</div> <!-- brand -->
-
+			</div>
+		</div>
+	<header>
+		<div class="container">
 			<div class="menu-bar">
 				<div class="menu">
 					<ul>
@@ -114,44 +60,11 @@
 					</form>
 				</div>
 			</div> <!-- menu -->
-
-				<script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
-
-					<!-- Create a pay button that will open the popup-->
-					<button id="checkout-button">Click HERE to Pay Now with Yoco!</button>
-					
-					<script>
-					var yoco = new window.YocoSDK({
-						publicKey: 'pk_live_c21afba5O4l8GRy1cb64',
-					});
-					var checkoutButton = document.querySelector('#checkout-button');
-					checkoutButton.addEventListener('click', function () {
-						yoco.showPopup({
-						amountInCents: 50000,
-						currency: 'ZAR',
-						name: 'Premium Seeds',
-						description: '50 x Premium Regular Cannabis Seeds Including Free Delivery (Only In South Africa)',
-						callback: function (result) {
-							// This function returns a token that your server can use to capture a payment
-							if (result.error) {
-							const errorMessage = result.error.message;
-							alert("error occured: " + errorMessage);
-							} else {
-							alert("card successfully tokenised: " + result.id);
-							}
-							// In a real integration - you would now pass this chargeToken back to your
-							// server along with the order/basket that the customer has purchased.
-						}
-						})
-					});
-				</script> <!-- Yoco Popup Payment Script -->
-			</div>
 		</div> <!-- container -->
 	</header> <!-- header -->
-
-	<div class="container">
 		<main>
-			<div class="slider">
+			<div class="container">
+				<div class="slider">
 				<div class="slide-1">
 					<img src="/img/slider/slide-1.png">
 				</div>
@@ -205,19 +118,6 @@
 				</div>
 				<div class="widget">
 					<div class="widget-heading">
-						<h3>My Information</h3>
-					</div>
-					<div class="widget-content">
-						<ul>
-							<li><a href="account.html">My Account</a></li>
-							<li><a href="orders.html">My Orders</a></li>
-							<li><a href="cart.html">Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="widget">
-					<div class="widget-heading">
 						<h3>Follow us</h3>
 					</div>
 					<div class="widget-content">
@@ -227,19 +127,6 @@
 								<li><a href="#"><img src="/img/icons/twitter.png"></a></li>
 								<li><a href="#"><img src="/img/icons/instagram.png"></a></li>
 							</ul>
-						</div>						
-					</div>
-					<div class="widget-heading">
-						<h3>Subscribe to our Newsletter</h3>
-					</div>
-					<div class="widget-content">
-						<div class="subscribe">
-							<form>
-								<div class="form-group">
-									<input type="text" class="form-control" name="subscribe" placeholder="Email address here...">
-									<img src="/img/icons/paper_plane.png">
-								</div>
-							</form>
 						</div>						
 					</div>
 				</div>
